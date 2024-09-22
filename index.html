@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker Simulation</title>
+    <title>ERROR ROOM - Malicious File</title>
     <style>
         body {
             background-color: black;
             color: lime;
-            font-family: "Courier New", Courier, monospace;
-            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
         #console {
-            white-space: pre-wrap;
+            white-space: pre;
+            font-size: 18px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <div id="console">Initializing hack...\n</div>
+    <div id="console"></div>
     <script>
-        const codeLines = [
-            "Attempting breach...",
-            "Bypassing firewall...",
-            "Accessing encrypted files...",
-            "Injecting malicious code...",
-            "Hack successful!",
-            "Welcome to the ERROR ROOM"
+        const messages = [
+            "Initializing hack...\n",
+            "Attempting breach...\n",
+            "Bypassing firewall...\n",
+            "Accessing encrypted files...\n",
+            "Scanning for vulnerabilities...\n",
+            "Threat detected: malware...\n",
+            "Injecting malicious code...\n",
+            "Hacking mainframe...\n",
+            "Accessing user credentials...\n",
+            "Hack successful!\n",
+            "Welcome to the ERROR ROOM\n"
         ];
-        let index = 0;
-        const console = document.getElementById("console");
-        function typeCode() {
-            if (index < codeLines.length) {
-                console.textContent += codeLines[index] + "\n";
-                index++;
-                setTimeout(typeCode, 1000);
-            }
+
+        let i = 0;
+
+        function simulateHack() {
+            document.getElementById('console').textContent += messages[i];
+            i = (i + 1) % messages.length; // Loop through messages
+            setTimeout(simulateHack, 1000);
         }
-        setTimeout(typeCode, 1000);
+
+        // Start the simulation
+        simulateHack();
+
+        // Attempt to enter fullscreen
+        setTimeout(() => {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.error("Failed to enter fullscreen:", err);
+            });
+        }, 100);
     </script>
 </body>
 </html>
